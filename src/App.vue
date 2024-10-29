@@ -12,6 +12,10 @@ const addToList = (e) => {
   todos.value.push({id: id++, text: e, done: false, date: new Date()})
 }
 
+const deleteFromList = (e) => {
+  todos.value = todos.value.filter((to) => to !== e)
+}
+
 // methods: {
 //   receiveEmit(todos) {
 
@@ -41,7 +45,7 @@ const addToList = (e) => {
     </div>
   </header>
 
-  <RouterView @response="addToList" :tasks="todos"/>
+  <RouterView @response="addToList" :tasks="todos" @delete="deleteFromList"/>
 </template>
 
 <style scoped>
